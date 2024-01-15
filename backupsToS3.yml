@@ -1,0 +1,15 @@
+---
+- name: Transporte Backups Veeam - Nutanix
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: Mover Backup a Bucket S3
+      ansible.windows.win_poweshell:
+        script: | 
+          Copy-VBRBackup -Backup "Agent Backup Job 2" -Repository "nutanix-poc"
+      register: backup_status
+
+    - name: Output
+      debug:
+        msg: "Status is ->: {{ backup_status }}"

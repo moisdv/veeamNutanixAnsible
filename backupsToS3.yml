@@ -5,7 +5,7 @@
   tasks:
 
     - name: Mover Backup a Bucket S3
-      ansible.windows.win_poweshell:
+      ansible.windows.win_powershell:
         script: | 
           Copy-VBRBackup -Backup "Agent Backup Job 2" -Repository "nutanix-poc"
       register: backup_status
